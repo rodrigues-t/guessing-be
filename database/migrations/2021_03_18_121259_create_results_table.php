@@ -14,7 +14,12 @@ class CreateResultsTable extends Migration
     public function up()
     {
         Schema::create('results', function (Blueprint $table) {
-            $table->id();
+            $table->id()->increments();
+            $table->integer('score');
+            $table->unsignedBigInteger('search_terms_id');
+            $table->unsignedBigInteger('users_id');
+            $table->foreign('search_terms_id')->references('id')->on('search_terms');
+            $table->foreign('users_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
