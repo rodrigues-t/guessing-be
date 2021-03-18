@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
+Route::group(['prefix' => 'movie'], function(){
+    Route::get('/find/{movieId}', 'MovieController@find')->name('api.movie.find');
+    Route::get('/search/{searchTerm}', 'MovieController@search')->name('api.movie.search');
+});
 Route::Resource('/result','ResultController', ['only' => ['index', 'store']]);

@@ -1,6 +1,10 @@
 <?php
 
 return [
+    "MOVIE_SERVICE_NAME" => env("MOVIE_SERVICE_NAME"),
+    "MOVIE_BASE_ENDPOINT" => env("MOVIE_BASE_ENDPOINT"),
+    "MOVIE_SERVICE_KEY" => env("MOVIE_SERVICE_KEY"),
+    
 
     /*
     |--------------------------------------------------------------------------
