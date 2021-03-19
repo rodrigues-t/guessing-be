@@ -42,7 +42,7 @@ class MovieTransformOMDB extends AMovieTransform {
                         $responseBody["Title"], 
                         $responseBody["Poster"],
                         $responseBody["Plot"],
-                        $responseBody["imdbRating"]
+                        (float) $responseBody["imdbRating"]
                     )
             );
         }
