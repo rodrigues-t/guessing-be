@@ -18,11 +18,11 @@ class ResultController extends Controller
      */
     public function index()
     {
-        return Result::select(['users.name as nameUser', 'search_terms.term as searchTerm', 'created_at', 'score'])
+        return Result::select(['users.name as userName', 'search_terms.term as searchTerm', 'created_at', 'score'])
             ->join('users', 'users.id', 'results.users_id')
             ->join('search_terms', 'search_terms.id', 'results.search_terms_id')
             ->orderBy('score', 'DESC')
-            ->orderBy('nameUser', 'ASC')
+            ->orderBy('userName', 'ASC')
             ->orderBy('searchTerm', 'ASC')
             ->get();
     }
