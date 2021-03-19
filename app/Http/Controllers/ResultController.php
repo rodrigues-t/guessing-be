@@ -37,8 +37,8 @@ class ResultController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'score' => 'required|integer|between:0,5',
-            'user.name' => 'required|between:2,32',
-            'searchTerm.term' => 'required|between:1,64',
+            'userName' => 'required|between:2,32',
+            'searchTerm' => 'required|between:1,64',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 500 );
@@ -48,10 +48,10 @@ class ResultController extends Controller
             DB::beginTransaction();
 
             $user = User::create([
-                'name' => $request->input('user.name')
+                'name' => $request->input('userName')
             ]);
             $searchTerm = SearchTerm::firstOrCreate([
-                'term' => strtolower($request->input('searchTerm.term'))
+                'term' => strtolower($request->input('searchTerm'))
             ]);
 
             $result = Result::create([
